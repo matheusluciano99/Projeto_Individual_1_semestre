@@ -12,9 +12,15 @@ def gera_posicao_desocupada(posicoes_ocupadas, largura_mapa, altura_mapa):
     # Além disso, a posição gerada deve ser adicionada à lista de posições ocupadas.
     
     # O código abaixo é apenas um exemplo. Você deve apagar este código e escrever o seu, fazendo o que foi pedido acima.
-    x = randint(1, largura_mapa-2)
-    y = randint(1, altura_mapa-2)
-    posicao = [x, y]
+    posicoes_ocupadas = []
+    ocupada = True
+    while ocupada:
+        x = randint(1, largura_mapa-2)
+        y = randint(1, altura_mapa-2)
+        posicao = [x, y]
+        if posicao not in posicoes_ocupadas:
+            posicoes_ocupadas.append(posicao)
+            ocupada = False
     return posicao
 
 
@@ -49,22 +55,37 @@ def gera_objetos(quantidade, tipo, cor, largura_mapa, altura_mapa, posicoes_ocup
 def inicializa_estado():
     # Cria lista de listas, cada uma com 50 espaços em branco
     # Você pode mudar esta lista, inclusive seu tamanho, à vontade
-    mapa = [
-        [' '] * 50,
-        [' '] * 50,
-        [' '] * 50,
-        [' '] * 50,
-        [' '] * 50,
-        [' '] * 50,
-        [' '] * 50,
-        [' '] * 50,
-        [' '] * 50,
-        [' '] * 50,
-        [' '] * 50,
-        [' '] * 50,
-        [' '] * 50,
-        [' '] * 50,
-        [' '] * 50,
+    mapa = [            # 90 x 30
+        [' '] * 90,
+        [' '] * 90,
+        [' '] * 90,
+        [' '] * 90,
+        [' '] * 90,
+        [' '] * 90,
+        [' '] * 90,
+        [' '] * 90,
+        [' '] * 90,
+        [' '] * 90,
+        [' '] * 90,
+        [' '] * 90,
+        [' '] * 90,
+        [' '] * 90,
+        [' '] * 90,
+        [' '] * 90,
+        [' '] * 90,
+        [' '] * 90,
+        [' '] * 90,
+        [' '] * 90,
+        [' '] * 90,
+        [' '] * 90,
+        [' '] * 90,
+        [' '] * 90,
+        [' '] * 90,
+        [' '] * 90,
+        [' '] * 90,
+        [' '] * 90,
+        [' '] * 90,
+        [' '] * 90,
     ]
     
     largura_mapa = len(mapa[0])
@@ -77,8 +98,9 @@ def inicializa_estado():
     posicoes_ocupadas = [pos_jogador]
     objetos = []
     objetos += gera_objetos(8, CORACAO, VERMELHO, largura_mapa, altura_mapa, posicoes_ocupadas)
-    objetos += gera_objetos(6, ESPINHO, VERDE_CLARO, largura_mapa, altura_mapa, posicoes_ocupadas)
-    
+    objetos += gera_objetos(6, COCO, MARROM_ESCURO, largura_mapa, altura_mapa, posicoes_ocupadas)
+    objetos += gera_objetos(10, CAVALO, MARROM_ESCURO, largura_mapa, altura_mapa, posicoes_ocupadas)
+
     return {
         'tela_atual': TELA_JOGO,
         'pos_jogador': pos_jogador,
@@ -88,3 +110,5 @@ def inicializa_estado():
         'mapa': mapa,
         'mensagem': '',  # Use esta mensagem para mostrar mensagens ao jogador, como "Você perdeu uma vida" ou "Você ganhou uma vida"
     }
+
+estado = inicializa_estado()
