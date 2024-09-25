@@ -25,10 +25,10 @@ TELA_GAME_OVER = 3
 # Objetos
 # As constantes abaixo são os caracteres que representam cada objeto no mapa.
 # Você pode mudar os caracteres para o que preferir.
-JOGADOR = '😎'
+JOGADOR = '@'
 CORACAO = '❤'
 CORACAO_VAZIO = '🤍'
-COCO = '💩'
-CAVALO = '🐎'
-PAREDE = '🧱'
+ESPINHO = '*'
+MONSTRO = 'Y'
+PAREDE = '#'
 AMBULANCIA = '🚑'

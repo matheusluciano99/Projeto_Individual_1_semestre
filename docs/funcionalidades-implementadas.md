@@ -30,24 +30,24 @@ No nível básico você deve entender o código fornecido e implementar as segui
 
 ### [Nível Proficiente](proficiente.md)
 
-- [ ] Adiciona paredes na inicialização (ainda sem colisão);
-- [ ] Adiciona colisão com as paredes:
-    - [ ] Impede o movimento do jogador:
-    - [ ] Mostra mensagem na tela.
-- [ ] Adiciona monstros:
-    - [ ] Sorteia posições aleatórias para os monstros;
-    - [ ] Adiciona `'vida'` e `'probabilidade_de_ataque'` aos monstros;
-    - [ ] Mostra monstros na tela.
-- [ ] Implementa sistema de batalha:
-    - [ ] Verifica se a nova posição do jogador está ocupada por um monstro e impede o movimento;
-    - [ ] Sorteia um número aleatório;
-    - [ ] Verifica quem ataca quem e diminui as vidas do alvo;
-    - [ ] Se o jogador morrer, acaba o jogo;
-    - [ ] Se o monstro morrer, o monstro é removido da lista e o jogador avança para a posição do monstro;
-    - [ ] Mostra mensagem na tela.
-- [ ] Implementa movimentação aleatória dos monstros:
-    - [ ] Sorteia um movimento para cada monstro e tenta andar naquela direção;
-    - [ ] Atualiza a posição se for uma posição válida (dentro do mapa e desocupada).
+- [x] Adiciona paredes na inicialização (ainda sem colisão);
+- [x] Adiciona colisão com as paredes:
+    - [x] Impede o movimento do jogador:
+    - [x] Mostra mensagem na tela.
+- [x] Adiciona monstros:
+    - [x] Sorteia posições aleatórias para os monstros;
+    - [x] Adiciona `'vida'` e `'probabilidade_de_ataque'` aos monstros;
+    - [x] Mostra monstros na tela.
+- [x] Implementa sistema de batalha:
+    - [x] Verifica se a nova posição do jogador está ocupada por um monstro e impede o movimento;
+    - [x] Sorteia um número aleatório;
+    - [x] Verifica quem ataca quem e diminui as vidas do alvo;
+    - [x] Se o jogador morrer, acaba o jogo;
+    - [x] Se o monstro morrer, o monstro é removido da lista e o jogador avança para a posição do monstro;
+    - [x] Mostra mensagem na tela.
+- [x] Implementa movimentação aleatória dos monstros:
+    - [x] Sorteia um movimento para cada monstro e tenta andar naquela direção;
+    - [x] Atualiza a posição se for uma posição válida (dentro do mapa e desocupada).
 
 ### [Nível Avançado](avancado.md)
 

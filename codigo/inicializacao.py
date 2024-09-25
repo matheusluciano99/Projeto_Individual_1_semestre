@@ -39,18 +39,43 @@ def gera_objetos(quantidade, tipo, cor, largura_mapa, altura_mapa, posicoes_ocup
     altura_mapa: altura do mapa do jogo em caracteres
     posicoes_ocupadas: lista de posições ocupadas no mapa. Cada posição é uma lista com exatamente dois elementos: a posição x e a posição y.
     """
+    lista_paredes = []
+    for i in range(largura_mapa):
+        lista_paredes.append([i, 0])
+    for i in range(1, altura_mapa):
+        lista_paredes.append([0, i])
+        lista_paredes.append([largura_mapa - 1, i])
+    for i in range(largura_mapa):
+        lista_paredes.append([i, altura_mapa-1])
     objetos = []
-
-    for i in range(quantidade):
-        posicao = gera_posicao_desocupada(posicoes_ocupadas, largura_mapa, altura_mapa)
-        objetos.append({
-            'tipo': tipo,
-            'posicao': posicao,
-            'cor': cor,
-        })
+    if tipo != PAREDE:
+        for i in range(quantidade):
+            posicao = gera_posicao_desocupada(posicoes_ocupadas, largura_mapa, altura_mapa)
+            if tipo != MONSTRO:
+                objetos.append({
+                    'tipo': tipo,
+                    'posicao': posicao,
+                    'cor': cor,
+                })
+            else:
+                objetos.append({
+                    'tipo': tipo,
+                    'posicao': posicao,
+                    'cor': cor,
+                    'vidas': 5,
+                    'probabilidade_de_ataque': 0.2,
+                })
+    else:
+        for i in range(quantidade):
+            posicao = lista_paredes[i]
+            posicoes_ocupadas.append(posicao)
+            objetos.append({
+                'tipo': tipo,
+                'posicao': posicao,
+                'cor': cor,
+            })
 
     return objetos
-
 
 def inicializa_estado():
     # Cria lista de listas, cada uma com 50 espaços em branco
@@ -97,9 +122,10 @@ def inicializa_estado():
     # Cria outros objetos do mapa
     posicoes_ocupadas = [pos_jogador]
     objetos = []
+    objetos += gera_objetos(237, PAREDE, MARROM_ESCURO, largura_mapa, altura_mapa, posicoes_ocupadas)
     objetos += gera_objetos(8, CORACAO, VERMELHO, largura_mapa, altura_mapa, posicoes_ocupadas)
-    objetos += gera_objetos(6, COCO, MARROM_ESCURO, largura_mapa, altura_mapa, posicoes_ocupadas)
-    objetos += gera_objetos(10, CAVALO, MARROM_ESCURO, largura_mapa, altura_mapa, posicoes_ocupadas)
+    objetos += gera_objetos(6, ESPINHO, MARROM_ESCURO, largura_mapa, altura_mapa, posicoes_ocupadas)
+    objetos += gera_objetos(10, MONSTRO, MARROM_ESCURO, largura_mapa, altura_mapa, posicoes_ocupadas)
 
     return {
         'tela_atual': TELA_JOGO,

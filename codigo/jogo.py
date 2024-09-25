@@ -26,7 +26,7 @@ def jogo(janela, altura_tela, largura_tela):
         # A função pega_tecla_apertada é semelhante a uma função input(): ela espera que o
         # jogador aperte uma tecla e retorna qual tecla foi apertada. Enquanto o jogador não
         # apertar uma tecla, a função fica travada.
-
+        
         # A função atualiza_estado é responsável por modificar o valor na chave 'tela_atual',
         # que é a chave que controla qual tela deve ser desenhada (ou se o jogo deve terminar)
         
@@ -43,7 +43,6 @@ def jogo(janela, altura_tela, largura_tela):
             tecla_apertada = motor_grafico.pega_tecla_apertada(janela)
             tela_game_over.atualiza_estado(estado, tecla_apertada)
         
-
 
 # Não se preocupe, você não precisa entender o que está acontecendo aqui.
 # É apenas uma forma de chamar a função jogo() usando a biblioteca curses.

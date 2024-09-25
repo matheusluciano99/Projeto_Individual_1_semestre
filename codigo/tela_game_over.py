@@ -8,7 +8,7 @@ def desenha_tela(janela, estado, altura, largura):
     # alterar este arquivo no nível avançado)
     motor.preenche_fundo(janela, VERDE_CLARO)
 
-    motor.desenha_string(janela, len(estado["mapa"][0]) // 2 + 30, len(estado["mapa"]) // 2 + 5, 'GAME_OVER', VERDE_CLARO, BRANCO)
+    motor.desenha_string(janela, len(estado["mapa"][0]) // 2 + 30, len(estado["mapa"]) // 2 + 5, 'GAME OVER', VERDE_CLARO, BRANCO)
     motor.mostra_janela(janela)
 
 
