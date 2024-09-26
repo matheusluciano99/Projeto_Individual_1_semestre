@@ -63,7 +63,7 @@ def gera_objetos(quantidade, tipo, cor, largura_mapa, altura_mapa, posicoes_ocup
                     'posicao': posicao,
                     'cor': cor,
                     'vidas': 5,
-                    'probabilidade_de_ataque': 0.2,
+                    'probabilidade_de_ataque': 0.25,
                 })
     else:
         for i in range(quantidade):

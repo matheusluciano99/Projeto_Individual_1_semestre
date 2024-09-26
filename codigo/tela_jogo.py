@@ -134,7 +134,8 @@ def movimentacao(estado, tecla):
 
 def desenha_tela(janela, estado, altura_tela, largura_tela):
     # Utilize o dicionário estado para saber onde o jogador e os outros objetos estão.
-    
+    posicao_ajustada_x = largura_tela // 2 - len(estado["mapa"][0]) // 2
+    posicao_ajustada_y = altura_tela // 2 - len(estado["mapa"]) // 2
     # Por exemplo, para saber a posição do jogador, use estado['pos_jogador']
     # O mapa esta armazenado em estado['mapa'].
     motor.preenche_fundo(janela, PRETO)
@@ -149,17 +150,13 @@ def desenha_tela(janela, estado, altura_tela, largura_tela):
 
         for x in range(len(estado["mapa"][0])):
             for y in range(len(estado["mapa"])):
-                motor.desenha_string(janela, x + 30, y + 5, " ", VERDE_CLARO, BRANCO)
+                motor.desenha_string(janela, x + posicao_ajustada_x, y + posicao_ajustada_y, " ", VERDE_CLARO, BRANCO)
 
         for dict_objetos in estado["objetos"]:
-            motor.desenha_string(janela, dict_objetos["posicao"][0] + 30, dict_objetos["posicao"][1] + 5, dict_objetos["tipo"], VERDE_CLARO, PRETO)
+            motor.desenha_string(janela, dict_objetos["posicao"][0] + posicao_ajustada_x, dict_objetos["posicao"][1] + posicao_ajustada_y, dict_objetos["tipo"], VERDE_CLARO, PRETO)
 
-        motor.desenha_string(janela, estado["pos_jogador"][0] + 30, estado["pos_jogador"][1] + 5, JOGADOR, VERDE_CLARO, PRETO)
-        motor.desenha_string(janela, 0, len(estado["mapa"]) + 10, estado["mensagem"], PRETO, BRANCO)
-
-    elif estado["tela_atual"] == TELA_GAME_OVER:
-        for x in range(len(estado["mapa"][0])):
-            motor.desenha_string(janela, x, len(estado["mapa"]) // 2, "GAME OVER", PRETO, BRANCO)
+        motor.desenha_string(janela, estado["pos_jogador"][0] + posicao_ajustada_x, estado["pos_jogador"][1] + posicao_ajustada_y, JOGADOR, VERDE_CLARO, PRETO)
+        motor.desenha_string(janela, 0, altura_tela - 1, estado["mensagem"], PRETO, BRANCO)
 
     motor.mostra_janela(janela)
     
