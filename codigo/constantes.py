@@ -20,7 +20,8 @@ MARROM_MAIS_ESCURO = [75, 40, 0]
 SAIR = 0
 TELA_JOGO = 1
 TELA_INVENTARIO = 2
-TELA_GAME_OVER = 3
+TELA_MORTE = 3
+TELA_MISSION_FAILED = 4
 
 # Objetos
 # As constantes abaixo são os caracteres que representam cada objeto no mapa.
@@ -28,7 +29,8 @@ TELA_GAME_OVER = 3
 JOGADOR = '@'
 CORACAO = '❤'
 CORACAO_VAZIO = '🤍'
-ESPINHO = '*'
-MONSTRO = 'Y'
+ARMADILHA = '*'
+MONSTRO_1 = '%'
+MONSTRO_2 = '&'
 PAREDE = '#'
-AMBULANCIA = '🚑'
+PESSOA = 'P'

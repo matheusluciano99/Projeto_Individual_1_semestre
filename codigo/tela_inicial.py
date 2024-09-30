@@ -8,7 +8,7 @@ def desenha_tela(janela, estado, altura, largura):
     # alterar este arquivo no nível avançado)
     motor.preenche_fundo(janela, VERDE_CLARO)
 
-    motor.desenha_string(janela, largura // 2, altura // 2, 'GAME OVER', VERDE_CLARO, BRANCO)
+    motor.desenha_string(janela, largura // 2 - len('BEM VINDO AO JOGO') // 2, altura // 2, 'BEM VINDO AO JOGO', VERDE_CLARO, BRANCO)
     motor.mostra_janela(janela)
 
 
