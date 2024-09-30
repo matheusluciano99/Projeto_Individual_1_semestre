@@ -8,8 +8,8 @@ from random import randint, random
 
 def drop_item(estado):
     dict_item_probabilidade = {
-        'pocao_de_vida': 0.1,
-        'pergaminho_da_ressureicao': 1,
+        'pocao_de_vida': 0.3,
+        'pergaminho_da_ressureicao': 0.15,
     }
     for item, chance_de_drop in dict_item_probabilidade.items():
         if len(estado['inventario']) == estado['max_inventario'] and random() < chance_de_drop:
@@ -212,6 +212,7 @@ def movimentacao(estado, tecla):
         if dict_objetos["tipo"] == PESSOA:
             pessoas.append(dict_objetos["posicao"])
 
+    
     if tecla == motor.SETA_CIMA:
         estado["pos_jogador"][1] -= 1
         if estado["pos_jogador"] in paredes:
@@ -331,7 +332,7 @@ def atualiza_estado(estado, tecla):
     numero_pessoas_vivas = len(lista_pessoas_vivas)
     estado["mensagem_pessoas_vivas"] = f"Pessoas vivas no mapa: {numero_pessoas_vivas}"
     
-    estado["mensagem"] = ""            
+    estado["mensagem"] = ""
 
     # Escreva seu código para atualizar o dicionário "estado" com base na tecla apertada pelo jogador aqui
     # APAGUE ESTA LINHA E ESCREVA SEU CÓDIGO AQUI

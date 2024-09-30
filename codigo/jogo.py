@@ -3,7 +3,9 @@ import tela_inventario
 import tela_jogo
 import tela_morte
 import tela_mission_failed
-from constantes import SAIR, TELA_INVENTARIO, TELA_JOGO, TELA_MORTE, TELA_MISSION_FAILED
+import tela_inicial
+import tela_instrucoes
+from constantes import SAIR, TELA_INVENTARIO, TELA_JOGO, TELA_MORTE, TELA_MISSION_FAILED, TELA_INICIAL, TELA_INSTRUCAO
 from inicializacao import inicializa_estado
 
 
@@ -31,7 +33,15 @@ def jogo(janela, altura_tela, largura_tela):
         # A função atualiza_estado é responsável por modificar o valor na chave 'tela_atual',
         # que é a chave que controla qual tela deve ser desenhada (ou se o jogo deve terminar)
         
-        if estado['tela_atual'] == TELA_JOGO:
+        if estado['tela_atual'] == TELA_INICIAL:
+            tela_inicial.desenha_tela(janela, estado, altura_tela, largura_tela)
+            tecla_apertada = motor_grafico.pega_tecla_apertada(janela)
+            tela_inicial.atualiza_estado(estado, tecla_apertada)
+        elif estado['tela_atual'] == TELA_INSTRUCAO:
+            tela_instrucoes.desenha_tela(janela, estado, altura_tela, largura_tela)
+            tecla_apertada = motor_grafico.pega_tecla_apertada(janela)
+            tela_instrucoes.atualiza_estado(estado, tecla_apertada)
+        elif estado['tela_atual'] == TELA_JOGO:
             tela_jogo.desenha_tela(janela, estado, altura_tela, largura_tela)
             tecla_apertada = motor_grafico.pega_tecla_apertada(janela)
             tela_jogo.atualiza_estado(estado, tecla_apertada)

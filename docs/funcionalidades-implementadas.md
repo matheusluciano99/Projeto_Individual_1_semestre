@@ -61,4 +61,4 @@ No nível básico você deve entender o código fornecido e implementar as segui
 - [ ] Funcionalidade 8: Mapa em arquivo;    V
 - [ ] Funcionalidade 9: Monstro cobrinha;
 - [x] Funcionalidade 10: Telas adicionais;      V
-- [ ] Funcionalidade 11: [Sua sugestão validada por um professor - INDIQUE AQUI O NOME DO PROFESSOR QUE VALIDOU SUA IDEIA].
+- [x] Funcionalidade 11: Missão de salvar as pessoas e item de ressureição de pessoas - Aprovado pela professora Barbara.

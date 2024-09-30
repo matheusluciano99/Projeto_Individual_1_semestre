@@ -18,10 +18,12 @@ MARROM_MAIS_ESCURO = [75, 40, 0]
 # Telas
 # As constantes abaixo são apenas números. Elas são usadas para controlar qual tela deve ser desenhada.
 SAIR = 0
-TELA_JOGO = 1
-TELA_INVENTARIO = 2
-TELA_MORTE = 3
-TELA_MISSION_FAILED = 4
+TELA_INICIAL = 1
+TELA_INSTRUCAO = 2
+TELA_JOGO = 3
+TELA_INVENTARIO = 4
+TELA_MORTE = 5
+TELA_MISSION_FAILED = 6
 
 # Objetos
 # As constantes abaixo são os caracteres que representam cada objeto no mapa.

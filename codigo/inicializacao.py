@@ -4,10 +4,12 @@ from constantes import *  # Você pode usar as constantes definidas em constante
                           # Por exemplo, usar a constante CORACAO é o mesmo que colocar a string '❤'
                           # diretamente no código
 
-def carregar_mapa(caminho_arquivo):
-    with open(caminho_arquivo, 'r') as arq:
-        mapa = arq.readlines()
-    return mapa
+# def carregar_mapa(caminho_arquivo):
+#     mapa = []
+#     with open(caminho_arquivo, 'r') as arq:
+#         for linha in arq:
+#             mapa.append(list(linha.strip()))
+#     return mapa
 
 def gera_posicao_desocupada(posicoes_ocupadas, largura_mapa, altura_mapa):
     # Implemente esta função para o nível básico
@@ -132,13 +134,9 @@ def inicializa_estado():
         [' '] * 90,
         [' '] * 90,
     ]
+    # mapa_inicial = './mapas/mapa_1.txt'
+    # mapa = carregar_mapa(mapa_inicial)
 
-    # mapa = []
-    # mapa_inicial = '/mapas/mapa_1.txt'
-    # carregar_mapa(mapa_inicial)
-    # mapa_1 = carregar_mapa()
-
-    
     largura_mapa = len(mapa[0])
     altura_mapa = len(mapa)
     
@@ -162,7 +160,7 @@ def inicializa_estado():
     objetos += gera_objetos(num_pessoas, PESSOA, MARROM_ESCURO, largura_mapa, altura_mapa, posicoes_ocupadas)
 
     return {
-        'tela_atual': TELA_JOGO,
+        'tela_atual': TELA_INICIAL,
         'pos_jogador': pos_jogador,
         'vidas': 5,                         # Quantidade atual de vidas do jogador - ele pode perder vidas ao colidir com espinhos ou ganhar vidas ao pegar corações
         'max_vidas': 5,                     # Quantidade máxima de vidas que o jogador pode ter - o valor da chave 'vidas' nunca pode ser maior que o valor da chave 'max_vidas'
