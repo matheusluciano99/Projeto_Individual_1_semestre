@@ -1,16 +1,14 @@
-from constantes import *  # Você pode usar as constantes definidas em constantes.py, se achar útil
-                          # Por exemplo, usar a constante CORACAO é o mesmo que colocar a string '❤'
-                          # diretamente no código
-import motor_grafico as motor  # Utilize as funções do arquivo motor_grafico.py para desenhar na tela
-                               # Por exemplo: motor.preenche_fundo(janela, [0, 0, 0]) preenche o fundo de preto
+from constantes import *  
+import motor_grafico as motor
 from random import randint, random
 
-
+# função para drop de item
 def drop_item(estado):
     dict_item_probabilidade = {
         'pocao_de_vida': 0.3,
         'pergaminho_da_ressureicao': 0.15,
     }
+
     for item, chance_de_drop in dict_item_probabilidade.items():
         if len(estado['inventario']) == estado['max_inventario'] and random() < chance_de_drop:
             estado['mensagem'] = "Seu inventário está cheio!"
@@ -20,7 +18,7 @@ def drop_item(estado):
             estado['mensagem'] = f"Você matou o monstro e obteve um(a) {item.replace('_', ' ').title()}!"
             break   # se o item for dropado, não dropa outro item
 
-
+# função para o combate entre o jogador e os monstros
 def combate(estado):
     ataque_jogador = random()
     for dict_objetos in estado["objetos"]:
@@ -38,7 +36,7 @@ def combate(estado):
                 else:
                     estado["mensagem"] = f"Você atacou o monstro! Ele tem {dict_objetos['vidas']} vidas!"
 
-
+# função para o monstro atacar as pessoas
 def interacao_pessoa_monstro(estado):
     monstros = []
     for dict_objetos in estado["objetos"]:
@@ -52,7 +50,7 @@ def interacao_pessoa_monstro(estado):
                 estado["num_pessoas_vivas"] -= 1
                 estado["mensagem"] = "Uma pessoa foi morta por um monstro!"
 
-
+# função para as pessoas morrerem nas armadilhas
 def interacao_pessoa_armadilha(estado):
     armadilhas = []
     for dict_objetos in estado["objetos"]:
@@ -66,7 +64,7 @@ def interacao_pessoa_armadilha(estado):
                 estado["num_pessoas_vivas"] -= 1
                 estado["mensagem"] = "Uma pessoa morreu em uma armadilha!"
 
-
+# movimentação das pessoas
 def movimentacao_pessoa(estado):
     paredes = []
     for dict_objetos in estado["objetos"]:
@@ -99,7 +97,7 @@ def movimentacao_pessoa(estado):
         if dict_objetos["tipo"] == PESSOA:
             comando = dict_comandos[randint(0, 3)]
             posicao_original = dict_objetos["posicao"]
-            pessoas.remove(posicao_original)
+            pessoas.remove(posicao_original) # remove a posição original da pessoa da lista de pessoas
 
             if comando == motor.SETA_CIMA:
                 dict_objetos["posicao"][1] -= 1
@@ -137,9 +135,9 @@ def movimentacao_pessoa(estado):
                 elif dict_objetos["posicao"] in monstros:
                     interacao_pessoa_monstro(estado)
             
-            pessoas.append(dict_objetos["posicao"])
+            pessoas.append(dict_objetos["posicao"]) # anexa a posição atual da pessoa na lista de pessoas
     
-
+# movimentação dos monstros
 def movimentacao_monstro(estado):
     paredes = []
     for dict_objetos in estado["objetos"]:
@@ -172,7 +170,7 @@ def movimentacao_monstro(estado):
         if dict_objetos["tipo"] == MONSTRO_1 or dict_objetos["tipo"] == MONSTRO_2:
             comando = dict_comandos[randint(0, 3)]
             posicao_original = dict_objetos["posicao"]
-            monstros.remove(posicao_original)
+            monstros.remove(posicao_original) # remove a posição original do monstro da lista de monstros
 
             if comando == motor.SETA_CIMA:
                 dict_objetos["posicao"][1] -= 1
@@ -194,8 +192,9 @@ def movimentacao_monstro(estado):
                 if dict_objetos["posicao"] in paredes or dict_objetos["posicao"] == estado["pos_jogador"] or dict_objetos["posicao"] in armadilhas or dict_objetos["posicao"] in monstros:
                     dict_objetos["posicao"][0] -= 1
 
-        monstros.append(dict_objetos["posicao"])
+        monstros.append(dict_objetos["posicao"]) # anexa a posição atual do monstro na lista de monstros
     
+# movimentação do jogador
 def movimentacao(estado, tecla):
     paredes = []
     for dict_objetos in estado["objetos"]:
@@ -269,7 +268,7 @@ def movimentacao(estado, tecla):
     for dict_objetos in estado["objetos"]:
         
         if estado["pos_jogador"] == dict_objetos["posicao"] and dict_objetos["tipo"] == ARMADILHA:
-            estado['mensagem'] = 'Você caiu no espinho!'
+            estado['mensagem'] = 'Você caiu na armadilha!'
             estado["vidas"] -= 1
 
         elif estado["pos_jogador"] == dict_objetos["posicao"] and dict_objetos["tipo"] == CORACAO:
@@ -284,22 +283,19 @@ def desenha_tela(janela, estado, altura_tela, largura_tela):
     # Utilize o dicionário estado para saber onde o jogador e os outros objetos estão.
     posicao_ajustada_x = largura_tela // 2 - len(estado["mapa"][0]) // 2
     posicao_ajustada_y = altura_tela // 2 - len(estado["mapa"]) // 2
-    # Por exemplo, para saber a posição do jogador, use estado['pos_jogador']
-    # O mapa esta armazenado em estado['mapa'].
+    
     motor.preenche_fundo(janela, PRETO)
     
-    # lista_pessoas_vivas = []
-    # for dict_objetos in estado["objetos"]:
-    #     if dict_objetos["tipo"] == PESSOA:
-    #         lista_pessoas_vivas.append(dict_objetos)
-    # numero_pessoas_vivas = len(lista_pessoas_vivas)
+    # Mensagem de quantas pessoas estão vivas
     estado["mensagem_pessoas_vivas"] = f"Pessoas vivas no mapa: {estado['num_pessoas_vivas']}"
     
     # O seu código deve desenhar a tela do jogo aqui a partir dos valores no dicionário "estado"
     if estado["tela_atual"] == TELA_JOGO:
+        # desenha as vidas do jogador
         for x in range(0, 2 * estado["vidas"], 2):
             motor.desenha_string(janela, x, 0, CORACAO, PRETO, BRANCO)
 
+        # desenha os corações vazios
         for x in range(2 * estado["vidas"], 2 * estado["max_vidas"], 2):
             motor.desenha_string(janela, x, 0, CORACAO_VAZIO, PRETO, BRANCO)
 
@@ -318,13 +314,7 @@ def desenha_tela(janela, estado, altura_tela, largura_tela):
     
 
 def atualiza_estado(estado, tecla):
-    # O seu código deve atualizar o dicionário "estado" com base na tecla apertada pelo jogador
-    # Por exemplo, se o jogador apertar a seta para a esquerda (o valor da variável será "ESQUERDA"), 
-    # o seu código deve atualizar o dicionário estado['pos_jogador'][0] -= 1
 
-    # Mude o valor da chave 'tela_atual' para mudar de tela
-    
-    # Começamos apagando a mensagem anterior, pois ela já foi mostrada no frame anterior
     lista_pessoas_vivas = []
     for dict_objetos in estado["objetos"]:
         if dict_objetos["tipo"] == PESSOA:
@@ -334,14 +324,15 @@ def atualiza_estado(estado, tecla):
     
     estado["mensagem"] = ""
 
-    # Escreva seu código para atualizar o dicionário "estado" com base na tecla apertada pelo jogador aqui
-    # APAGUE ESTA LINHA E ESCREVA SEU CÓDIGO AQUI
+    # bloco de movimentação
     movimentacao(estado, tecla)
     movimentacao_monstro(estado)
     movimentacao_pessoa(estado)
 
+    # se o jogador morrer, a tela de morte é mostrada
     if estado["vidas"] == 0:
         estado["tela_atual"] = TELA_MORTE
+    # se todas as pessoas morrerem, a tela de mission failed é mostrada
     elif numero_pessoas_vivas == 0:
         estado["tela_atual"] = TELA_MISSION_FAILED
 

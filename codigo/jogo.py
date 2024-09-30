@@ -33,27 +33,32 @@ def jogo(janela, altura_tela, largura_tela):
         # A função atualiza_estado é responsável por modificar o valor na chave 'tela_atual',
         # que é a chave que controla qual tela deve ser desenhada (ou se o jogo deve terminar)
         
-        if estado['tela_atual'] == TELA_INICIAL:
+        if estado['tela_atual'] == TELA_INICIAL:                        # desenha a tela inicial
             tela_inicial.desenha_tela(janela, estado, altura_tela, largura_tela)
             tecla_apertada = motor_grafico.pega_tecla_apertada(janela)
             tela_inicial.atualiza_estado(estado, tecla_apertada)
-        elif estado['tela_atual'] == TELA_INSTRUCAO:
+
+        elif estado['tela_atual'] == TELA_INSTRUCAO:                    # desenha a tela de instruções
             tela_instrucoes.desenha_tela(janela, estado, altura_tela, largura_tela)
             tecla_apertada = motor_grafico.pega_tecla_apertada(janela)
             tela_instrucoes.atualiza_estado(estado, tecla_apertada)
-        elif estado['tela_atual'] == TELA_JOGO:
+        
+        elif estado['tela_atual'] == TELA_JOGO:                         # desenha a tela do jogo
             tela_jogo.desenha_tela(janela, estado, altura_tela, largura_tela)
             tecla_apertada = motor_grafico.pega_tecla_apertada(janela)
             tela_jogo.atualiza_estado(estado, tecla_apertada)
-        elif estado['tela_atual'] == TELA_INVENTARIO:
+        
+        elif estado['tela_atual'] == TELA_INVENTARIO:                   # desenha a tela de inventário
             tela_inventario.desenha_tela(janela, estado, altura_tela, largura_tela)
             tecla_apertada = motor_grafico.pega_tecla_apertada(janela)
             tela_inventario.atualiza_estado(estado, tecla_apertada)
-        elif estado['tela_atual'] == TELA_MORTE:
+        
+        elif estado['tela_atual'] == TELA_MORTE:                        # desenha a tela de morte
             tela_morte.desenha_tela(janela, estado, altura_tela, largura_tela)
             tecla_apertada = motor_grafico.pega_tecla_apertada(janela)
             tela_morte.atualiza_estado(estado, tecla_apertada)
-        elif estado['tela_atual'] == TELA_MISSION_FAILED:
+        
+        elif estado['tela_atual'] == TELA_MISSION_FAILED:               # desenha a tela de mission failed
             tela_mission_failed.desenha_tela(janela, estado, altura_tela, largura_tela)
             tecla_apertada = motor_grafico.pega_tecla_apertada(janela)
             tela_mission_failed.atualiza_estado(estado, tecla_apertada)

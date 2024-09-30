@@ -1,5 +1,4 @@
 # Constante de cores para facilitar a vida
-# Fique à vontade para adicionar e/ou modificar os valores deste arquivo
 
 # Cores
 # Uma cor é representada por uma lista de 3 valores. Cada valor representa 

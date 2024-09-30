@@ -3,9 +3,6 @@ import motor_grafico as motor
 
 
 def desenha_tela(janela, estado, altura, largura):
-    # Você pode usar esta função como base para a sua função desenha_tela do arquivo tela_jogo.py
-    # Esta tela é mostrada quando o jogador aperta a tecla 'i' (você provavelmente vai querer 
-    # alterar este arquivo no nível avançado)
     motor.preenche_fundo(janela, VERDE_CLARO)
 
     motor.desenha_string(janela, largura // 2 - len('The Unculling') // 2, altura // 2, 'The Unculling', VERDE_CLARO, BRANCO)

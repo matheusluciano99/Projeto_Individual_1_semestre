@@ -52,13 +52,13 @@ No nível básico você deve entender o código fornecido e implementar as segui
 ### [Nível Avançado](avancado.md)
 
 - [ ] Funcionalidade 1: Personagem centralizado na tela e mapa maior do que a janela;
-- [x] Funcionalidade 2: Diferentes tipos de inimigos;   V
+- [x] Funcionalidade 2: Diferentes tipos de inimigos;   
 - [ ] Funcionalidade 3: Chefão;
-- [ ] Funcionalidade 4: Sala secreta;   V
-- [ ] Funcionalidade 5: Sistema de experiência e níveis;    V
-- [x] Funcionalidade 6: Itens e inventário;     V       
+- [ ] Funcionalidade 4: Sala secreta;   
+- [ ] Funcionalidade 5: Sistema de experiência e níveis;    
+- [x] Funcionalidade 6: Itens e inventário;            
 - [ ] Funcionalidade 7: Equipamento e limite de mochila;
-- [ ] Funcionalidade 8: Mapa em arquivo;    V
+- [ ] Funcionalidade 8: Mapa em arquivo;    
 - [ ] Funcionalidade 9: Monstro cobrinha;
-- [x] Funcionalidade 10: Telas adicionais;      V
+- [x] Funcionalidade 10: Telas adicionais;      
 - [x] Funcionalidade 11: Missão de salvar as pessoas e item de ressureição de pessoas - Aprovado pela professora Barbara.
